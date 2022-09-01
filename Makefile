@@ -10,4 +10,5 @@ clean:
 run: build
 	mkdir -p ./run
 	cp ./build/libengine.so ./run/libengine.so
-	# ./run/engine
+	cp ./build/lightray ./run/lightray
+	./run/lightray

@@ -21,3 +21,5 @@ add_executable(lightray lightray/src/main.cpp ${SOURCE_FILES}) # make executable
 set_property(TARGET lightray PROPERTY CXX_STANDARD 20) # use c++20
 
 target_include_directories(lightray PRIVATE engine/src/include) # includes for lightray
+
+target_link_libraries(lightray engine)

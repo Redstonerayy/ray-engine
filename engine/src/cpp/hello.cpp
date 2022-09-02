@@ -6,4 +6,4 @@ namespace Engine {
 	void Hello(){
 		std::cout << "hello" << std::endl;
 	}
-};
+}

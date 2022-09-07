@@ -4,6 +4,7 @@ project(rayengine)
 # compile options
 set(CMAKE_CXX_FLAGS "-Wall -O2")
 
+
 # ENGINE
 FILE(GLOB SOURCE_FILES engine/src/**/*.cpp) # get source files
 
@@ -13,6 +14,7 @@ set_property(TARGET engine PROPERTY CXX_STANDARD 20) # use c++20
 
 target_include_directories(engine PRIVATE engine/src/include) # includes for engine
 
+
 # LIGHTRAY
 FILE(GLOB SOURCE_FILES lightray/src/**/*.cpp) # get source files
 
@@ -20,6 +22,6 @@ add_executable(lightray lightray/src/main.cpp ${SOURCE_FILES}) # make executable
 
 set_property(TARGET lightray PROPERTY CXX_STANDARD 20) # use c++20
 
-target_include_directories(lightray PRIVATE engine/src/include) # includes for lightray
+target_include_directories(lightray PRIVATE engine/src) # includes for lightray
 
 target_link_libraries(lightray engine)

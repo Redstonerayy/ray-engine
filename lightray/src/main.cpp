@@ -1,9 +1,21 @@
-#include "hello.hpp"
+#include "engine.hpp"
 
-#include <stdio.h>
-#include <cstdlib>
-#include <dlfcn.h>
+class Sandbox : public Engine::Application
+{
+public:
+	Sandbox()
+	{
 
-int main(){
-    Engine::Hello();
+	}
+
+	~Sandbox()
+	{
+
+	}
+
+};
+
+Engine::Application* Engine::CreateApplication()
+{
+	return new Sandbox();
 }

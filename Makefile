@@ -1,7 +1,8 @@
 .PHONY: build
 build:
-	CC=/usr/bin/clang CXX=/usr/bin/clang++ cmake -B ./build .
-	make -C ./build
+	clear
+	CC=/usr/bin/clang CXX=/usr/bin/clang++ cmake -B ./build -G Ninja .
+	ninja -C ./build -j 14
 
 clean:
 	rm -rf ./build

@@ -17,5 +17,6 @@ public:
 
 Engine::Application* Engine::CreateApplication()
 {
+    ENGINE_ERROR("SDF");
 	return new Sandbox();
 }

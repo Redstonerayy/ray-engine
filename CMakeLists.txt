@@ -18,7 +18,13 @@ add_library(engine SHARED ${SOURCE_FILES}) # make .so shared library
 
 set_property(TARGET engine PROPERTY CXX_STANDARD 20) # use c++20
 
-target_include_directories(engine PRIVATE engine/src/include) # includes for engine
+target_include_directories(
+    engine PRIVATE 
+        engine/src/include
+        engine/src/include/events
+        engine/src/include/application
+        engine/src/include/log
+) # includes for engine
 target_include_directories(engine PRIVATE thirdparty/spdlog/include/)
 
 
@@ -29,7 +35,13 @@ add_executable(lightray lightray/src/main.cpp ${SOURCE_FILES}) # make executable
 
 set_property(TARGET lightray PROPERTY CXX_STANDARD 20) # use c++20
 
-target_include_directories(lightray PRIVATE engine/src) # includes for lightray
+target_include_directories(
+    lightray PRIVATE 
+        engine/src/include
+        engine/src/include/events
+        engine/src/include/application
+        engine/src/include/log
+) # includes for engine
 target_include_directories(lightray PRIVATE thirdparty/spdlog/include)
 
 target_link_libraries(lightray engine spdlog)

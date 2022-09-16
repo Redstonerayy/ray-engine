@@ -17,6 +17,7 @@ public:
 
 Engine::Application* Engine::CreateApplication()
 {
-    ENGINE_ERROR("SDF");
+    Engine::Log::Init();
+    Engine::Log::GetEngineLogger()->error("SDF");
 	return new Sandbox();
 }

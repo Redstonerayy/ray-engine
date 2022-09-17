@@ -1,4 +1,4 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.23)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.23) # 3.16
 project(rayengine)
 
 
@@ -9,6 +9,16 @@ set(CMAKE_CXX_FLAGS "-Wall -O2")
 # LIBRARIES
 # SPDLOG
 add_subdirectory(thirdparty/spdlog)
+
+#spdlog headers
+set(SPDLOG_HEADERS 
+        thirdparty/spdlog/include/spdlog/sinks/stdout_color_sinks.h
+        thirdparty/spdlog/include/spdlog/spdlog.h
+)
+
+set(ENGINE_HEADERS
+        engine/src/include/engine.hpp
+)
 
 
 # ENGINE
@@ -25,7 +35,11 @@ target_include_directories(
         engine/src/include/application
         engine/src/include/log
 ) # includes for engine
+
+
 target_include_directories(engine PRIVATE thirdparty/spdlog/include/)
+target_precompile_headers(engine PRIVATE ${SPDLOG_HEADERS})
+
 
 
 # LIGHTRAY
@@ -43,5 +57,7 @@ target_include_directories(
         engine/src/include/log
 ) # includes for engine
 target_include_directories(lightray PRIVATE thirdparty/spdlog/include)
+
+target_precompile_headers(lightray PRIVATE ${ENGINE_HEADERS})
 
 target_link_libraries(lightray engine spdlog)

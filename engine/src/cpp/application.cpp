@@ -1,11 +1,12 @@
 #include "application.hpp"
 #include "log.hpp"
-#include "applicationevents.h"
+#include "applicationevents.hpp"
 
 #include <iostream>
 
 namespace Engine {
     Application::Application(){
+        m_Window = std::unique_ptr<Window>(Window::Create());
     }
 
     Application::~Application(){
@@ -13,15 +14,8 @@ namespace Engine {
     }
 
     void Application::Run(){
-        WindowResizeEvent e(1280, 720);
-        Log::Init();
-        if (e.IsInCategory(EventCategoryApplication))
-		{
-			ENGINE_TRACE(e.ToString());
-		}
-		if (e.IsInCategory(EventCategoryInput))
-		{
-			ENGINE_TRACE(e.ToString());
-		}
+        while (m_Running){
+            m_Window->OnUpdate();
+        }
     }
 }

@@ -10,6 +10,9 @@ set(CMAKE_CXX_FLAGS "-Wall -O2")
 # SPDLOG
 add_subdirectory(thirdparty/spdlog)
 
+# GLFW
+add_subdirectory(thirdparty/glfw)
+
 #spdlog headers
 set(SPDLOG_HEADERS 
         thirdparty/spdlog/include/spdlog/sinks/stdout_color_sinks.h
@@ -34,11 +37,14 @@ target_include_directories(
         engine/src/include/events
         engine/src/include/application
         engine/src/include/log
+        engine/src/include/window
+        engine/src/include/platforms/windows
+        engine/src/pch
 ) # includes for engine
 
 
 target_include_directories(engine PRIVATE thirdparty/spdlog/include/)
-target_precompile_headers(engine PRIVATE ${SPDLOG_HEADERS})
+target_precompile_headers(engine PRIVATE ${SPDLOG_HEADERS} engine/src/include/pch/enginepch.hpp)
 
 
 
@@ -60,4 +66,5 @@ target_include_directories(lightray PRIVATE thirdparty/spdlog/include)
 
 target_precompile_headers(lightray PRIVATE ${ENGINE_HEADERS})
 
-target_link_libraries(lightray engine spdlog)
+target_link_libraries(lightray engine spdlog glfw)
+

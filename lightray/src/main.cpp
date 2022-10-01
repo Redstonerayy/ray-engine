@@ -1,14 +1,14 @@
 #include "engine.hpp"
 
-class Sandbox : public Engine::Application
+class Lightray : public Engine::Application
 {
 public:
-	Sandbox()
+	Lightray()
 	{
 
 	}
 
-	~Sandbox()
+	~Lightray()
 	{
 
 	}
@@ -17,6 +17,6 @@ public:
 
 Engine::Application* Engine::CreateApplication()
 {
-	return new Sandbox();
+	return new Lightray();
     
 }
